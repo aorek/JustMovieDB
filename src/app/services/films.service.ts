@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
-import { Movie, MoviesResponse } from '../interfaces/nowPlaying-response';
+import { Movie, MoviesResponse } from '../interfaces/movies-response';
 
 @Injectable({
   providedIn: 'root',
