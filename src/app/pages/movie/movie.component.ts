@@ -29,6 +29,9 @@ export class MovieComponent implements OnInit {
         }
 
         this.movie = movie;
+        this.movie.credits.cast = this.movie.credits.cast.filter(
+          (c) => c.profile_path !== null
+        );
         console.log(movie.credits.cast);
       });
     });

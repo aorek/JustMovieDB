@@ -1,0 +1,14 @@
+<div class="swiper-container">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div *ngFor="let character of cast" class="swiper-slide">
+      <img
+        [src]="character.profile_path | noimage"
+        [alt]="character.name"
+        class="img-thumbnail"
+      />
+      <h5>{{ character.name }}</h5>
+    </div>
+  </div>
+</div>
