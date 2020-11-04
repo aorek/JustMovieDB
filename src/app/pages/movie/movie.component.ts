@@ -1,6 +1,8 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { Movie } from 'src/app/interfaces/movies-response';
 import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
@@ -9,16 +11,23 @@ import { MoviesService } from 'src/app/services/movies.service';
   styleUrls: ['./movie.component.css'],
 })
 export class MovieComponent implements OnInit {
+  public movie: Movie;
+
   constructor(
     private router: ActivatedRoute,
-    private moviesService: MoviesService
+    private moviesService: MoviesService,
+    private localtion: Location
   ) {}
 
   ngOnInit(): void {
     this.router.params.subscribe(({ id }) => {
-      this.moviesService.getMovieById(id).subscribe((movie) => {
-        console.log(movie);
+      this.moviesService.getMovieById(id).subscribe((movie: Movie) => {
+        this.movie = movie;
       });
     });
+  }
+
+  onGoBackClick() {
+    this.localtion.back();
   }
 }

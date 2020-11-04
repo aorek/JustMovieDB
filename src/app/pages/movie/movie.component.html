@@ -1,1 +1,39 @@
-<p>film works!</p>
+<div class="row text-white" *ngIf="movie">
+  <div class="col-md-6 text-center">
+    <img
+      [src]="movie.poster_path | noimage"
+      [alt]="movie.title"
+      class="img-thumbnail"
+    />
+  </div>
+  <div class="col-md-6 d-flex flex-column">
+    <h3 class="mt-5 mt-md-0">{{ movie.title }}</h3>
+    <div class="row justify-content-end">
+      <div class="col-8 col-sm-4 col-md-10">
+        <star-rating
+          [value]="movie.vote_average"
+          totalstars="10"
+          checkedcolor="yellow"
+          uncheckedcolor="grey"
+          size="15px"
+          readonly="false"
+        ></star-rating>
+      </div>
+      <div class="col-2">{{ movie.vote_average | number: "1.1-2" }}</div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col">
+        {{ movie.overview }}
+      </div>
+    </div>
+
+    <div class="row mt-3 mt-md-auto">
+      <div class="col">
+        <button class="btn btn-outline-danger" (click)="onGoBackClick()">
+          Go back
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
