@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
-import { Movie, NowPlaying } from '../interfaces/nowPlaying-response';
+import { Movie, MoviesResponse } from '../interfaces/nowPlaying-response';
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +31,7 @@ export class FilmsService {
 
     this.loading = true;
     return this.http
-      .get<NowPlaying>(`${this.apiUrl}/movie/now_playing`, {
+      .get<MoviesResponse>(`${this.apiUrl}/movie/now_playing`, {
         params: this.params,
       })
       .pipe(
@@ -41,5 +41,14 @@ export class FilmsService {
           this.loading = false;
         })
       );
+  }
+
+  serchMovie(query: string): Observable<Movie[]> {
+    const params = { ...this.params, page: '1', query };
+    return this.http
+      .get<MoviesResponse>(`${this.apiUrl}/search/movie`, {
+        params,
+      })
+      .pipe(map(({ results }) => results));
   }
 }
