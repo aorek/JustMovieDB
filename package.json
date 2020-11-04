@@ -1,6 +1,7 @@
 {
-  "name": "filmsdb",
-  "version": "0.0.0",
+  "name": "justmoviedb",
+  "version": "0.1.0",
+  "repository": "https://github.com/aorek/JustMovieDB",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

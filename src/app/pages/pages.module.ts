@@ -5,10 +5,10 @@ import { ComponentsModule } from '../components/components.module';
 
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
-import { FilmComponent } from './film/film.component';
+import { MovieComponent } from './movie/movie.component';
 
 @NgModule({
-  declarations: [HomeComponent, SearchComponent, FilmComponent],
+  declarations: [HomeComponent, SearchComponent, MovieComponent],
   imports: [CommonModule, ComponentsModule],
 })
 export class PagesModule {}

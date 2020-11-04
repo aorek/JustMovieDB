@@ -8,7 +8,7 @@ import { Movie, MoviesResponse } from '../interfaces/movies-response';
 @Injectable({
   providedIn: 'root',
 })
-export class FilmsService {
+export class MoviesService {
   private apiUrl: string = 'https://api.themoviedb.org/3';
   public page: number;
   public loading: boolean;

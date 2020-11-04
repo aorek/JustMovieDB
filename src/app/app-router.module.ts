@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
-import { FilmComponent } from './pages/film/film.component';
+import { MovieComponent } from './pages/movie/movie.component';
 
 const routes: Routes = [
   {
@@ -15,8 +15,8 @@ const routes: Routes = [
     component: SearchComponent,
   },
   {
-    path: 'film/:id',
-    component: FilmComponent,
+    path: 'movie/:id',
+    component: MovieComponent,
   },
   {
     path: '**',

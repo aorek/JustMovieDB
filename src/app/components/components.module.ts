@@ -6,11 +6,15 @@ import { PipesModule } from '../pipes/pipes.module';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { SlideshowComponent } from './slideshow/slideshow.component';
-import { FilmsPosterGridComponent } from './films-poster-grid/films-poster-grid.component';
+import { MoviesPosterGridComponent } from './movies-poster-grid/movies-poster-grid.component';
 
 @NgModule({
-  declarations: [NavbarComponent, SlideshowComponent, FilmsPosterGridComponent],
+  declarations: [
+    NavbarComponent,
+    SlideshowComponent,
+    MoviesPosterGridComponent,
+  ],
   imports: [CommonModule, RouterModule, RatingModule, PipesModule],
-  exports: [NavbarComponent, SlideshowComponent, FilmsPosterGridComponent],
+  exports: [NavbarComponent, SlideshowComponent, MoviesPosterGridComponent],
 })
 export class ComponentsModule {}

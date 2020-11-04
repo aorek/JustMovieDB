@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Movie } from 'src/app/interfaces/movies-response';
-import { FilmsService } from 'src/app/services/films.service';
+import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
   selector: 'app-search',
@@ -15,13 +15,13 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private router: ActivatedRoute,
-    private filmsService: FilmsService
+    private moviesService: MoviesService
   ) {}
 
   ngOnInit(): void {
     this.router.params.subscribe(({ query }) => {
       this.query = query;
-      this.filmsService.serchMovie(query).subscribe((movies) => {
+      this.moviesService.serchMovie(query).subscribe((movies) => {
         this.movies = movies;
       });
     });

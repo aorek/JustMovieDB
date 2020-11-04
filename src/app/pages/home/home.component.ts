@@ -1,6 +1,7 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+
 import { Movie } from 'src/app/interfaces/movies-response';
-import { FilmsService } from 'src/app/services/films.service';
+import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
   selector: 'app-home',
@@ -19,24 +20,24 @@ export class HomeComponent implements OnInit, OnDestroy {
       document.documentElement.scrollHeight || document.body.scrollHeight;
 
     if (scrollPos > scrollHeight) {
-      this.filmService.getNowPlaying().subscribe((movies) => {
+      this.moviesService.getNowPlaying().subscribe((movies) => {
         this.movies.push(...movies);
       });
     }
   }
 
-  constructor(private filmService: FilmsService) {
+  constructor(private moviesService: MoviesService) {
     this.movies = [];
   }
 
   ngOnInit(): void {
-    this.filmService.getNowPlaying().subscribe((movies) => {
+    this.moviesService.getNowPlaying().subscribe((movies) => {
       this.movies = movies;
       this.moviesSlice = movies;
     });
   }
 
   ngOnDestroy(): void {
-    this.filmService.resetPage();
+    this.moviesService.resetPage();
   }
 }
