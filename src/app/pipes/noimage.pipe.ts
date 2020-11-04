@@ -8,6 +8,6 @@ export class NoimagePipe implements PipeTransform {
     const noImgPath = '/assets/images/no-image.jpg';
     if (!image) return noImgPath;
 
-    return 'https://image.tmdb.org/t/p/w500' + image;
+    return 'https://image.tmdb.org/t/p/w300' + image;
   }
 }
