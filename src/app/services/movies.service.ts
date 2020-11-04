@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { Movie, MoviesResponse } from '../interfaces/movies-response';
 import { MovieResponse } from '../interfaces/movie-response';
@@ -49,9 +49,11 @@ export class MoviesService {
   }
 
   getMovieById(id: string): Observable<MovieResponse> {
-    return this.http.get<MovieResponse>(`${this.apiUrl}/movie/${id}`, {
-      params: { ...this.params, append_to_response: 'credits' },
-    });
+    return this.http
+      .get<MovieResponse>(`${this.apiUrl}/movie/${id}`, {
+        params: { ...this.params, append_to_response: 'credits' },
+      })
+      .pipe(catchError((err) => of(null)));
   }
 
   serchMovie(query: string): Observable<Movie[]> {
