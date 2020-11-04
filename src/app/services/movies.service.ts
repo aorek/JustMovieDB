@@ -47,6 +47,10 @@ export class MoviesService {
       );
   }
 
+  getMovieById(id: string) {
+    return this.http.get(`${this.apiUrl}/movie/${id}`, { params: this.params });
+  }
+
   serchMovie(query: string): Observable<Movie[]> {
     const params = { ...this.params, page: '1', query };
     return this.http
