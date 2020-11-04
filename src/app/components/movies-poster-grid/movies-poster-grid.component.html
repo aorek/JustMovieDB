@@ -6,7 +6,7 @@
     <img
       [src]="movie.poster_path | noimage"
       [alt]="movie.title"
-      class="img-fluid poster pointer mx-auto h-100"
+      class="img-fluid poster pointer mx-auto h-100 fade-in"
       (click)="onClickMovie(movie.id)"
     />
     <div class="mt-sm-auto">
