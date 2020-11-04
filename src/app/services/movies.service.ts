@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { Movie, MoviesResponse } from '../interfaces/movies-response';
+import { MovieResponse } from '../interfaces/movie-response';
 
 @Injectable({
   providedIn: 'root',
@@ -47,8 +48,10 @@ export class MoviesService {
       );
   }
 
-  getMovieById(id: string) {
-    return this.http.get(`${this.apiUrl}/movie/${id}`, { params: this.params });
+  getMovieById(id: string): Observable<MovieResponse> {
+    return this.http.get<MovieResponse>(`${this.apiUrl}/movie/${id}`, {
+      params: { ...this.params, append_to_response: 'credits' },
+    });
   }
 
   serchMovie(query: string): Observable<Movie[]> {
