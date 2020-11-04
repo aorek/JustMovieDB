@@ -26,6 +26,10 @@ export class FilmsService {
     };
   }
 
+  resetPage() {
+    this.page = 1;
+  }
+
   getNowPlaying(): Observable<Movie[]> {
     if (this.loading) return of([]);
 
